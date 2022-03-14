@@ -79,11 +79,6 @@ cliente.on("messageCreate", (msg) => {
         }
     }
 });
-// When a new channel is created
-cliente.on("channelCreate", (canal) => {
-    canal.send('git commit -m "first message"');
-    
-});
 // Handles errors
 cliente.on("error", (error) => {
     console.log(`Discord.js Error: .\n${error}`);
