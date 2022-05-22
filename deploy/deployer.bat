@@ -1,4 +1,5 @@
 cd ..
+rd /s /q .git
 rd /s /q src
 del .gitignore
 del embed.txt

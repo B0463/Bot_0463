@@ -1,4 +1,5 @@
 cd ..
+rm -s .git
 rm -s src
 rm .gitignore
 rm embed.txt
