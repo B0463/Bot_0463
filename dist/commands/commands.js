@@ -8,6 +8,7 @@ const ceira_1 = __importDefault(require("./ceira"));
 const sinas_1 = __importDefault(require("./sinas"));
 const avatar_1 = __importDefault(require("./avatar"));
 const servericon_1 = __importDefault(require("./servericon"));
+const theclock_1 = __importDefault(require("./theclock"));
 function init(msg, prefix) {
     const userCom = msg.content.split(" ")[0];
     switch (userCom) {
@@ -28,6 +29,9 @@ function init(msg, prefix) {
             break;
         case (prefix + "servericon"):
             servericon_1.default.exec(msg, prefix);
+            break;
+        case (prefix + "theclock"):
+            theclock_1.default.exec(msg, prefix);
             break;
         default:
             break;

@@ -5,6 +5,7 @@ import ceira from "./ceira";
 import sinas from "./sinas";
 import avatar from "./avatar";
 import servericon from "./servericon";
+import theclock from "./theclock";
 function init(msg: Message, prefix: string) {
     const userCom = msg.content.split(" ")[0];
     switch(userCom) {
@@ -25,6 +26,9 @@ function init(msg: Message, prefix: string) {
             break;
         case(prefix+"servericon"):
             servericon.exec(msg, prefix);
+            break;
+        case(prefix+"theclock"):
+            theclock.exec(msg, prefix);
             break;
         default:
             break;
