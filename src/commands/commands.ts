@@ -7,7 +7,8 @@ import avatar from "./avatar";
 import servericon from "./servericon";
 import theclock from "./theclock";
 import userinfo from "./userinfo";
-function init(msg: Message, prefix: string) {
+function init(msg: Message, prefix: string): number {
+    if(msg.author.bot) return 1;
     const userCom = msg.content.split(" ")[0];
     switch(userCom) {
         case(prefix):
@@ -37,6 +38,7 @@ function init(msg: Message, prefix: string) {
         default:
             break;
     }
+    return 0;
 }
 const obj = {
     init

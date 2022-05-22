@@ -11,6 +11,8 @@ const servericon_1 = __importDefault(require("./servericon"));
 const theclock_1 = __importDefault(require("./theclock"));
 const userinfo_1 = __importDefault(require("./userinfo"));
 function init(msg, prefix) {
+    if (msg.author.bot)
+        return 1;
     const userCom = msg.content.split(" ")[0];
     switch (userCom) {
         case (prefix):
@@ -40,6 +42,7 @@ function init(msg, prefix) {
         default:
             break;
     }
+    return 0;
 }
 const obj = {
     init
