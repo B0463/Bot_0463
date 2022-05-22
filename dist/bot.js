@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // Init the bot.
 const discord_js_1 = require("discord.js");
 console.log("[OK] import discord.js");
-const console_color_1 = __importDefault(require("./console_color"));
+const console_color_1 = __importDefault(require("./functions/console_color"));
 console_color_1.default.ok("import log format");
 const commands_1 = __importDefault(require("./commands/commands"));
 console_color_1.default.ok("import commands ok");
@@ -17,10 +17,15 @@ const prefix = configFile.prefix;
 console_color_1.default.ok("set prefix");
 const token = configFile.token;
 console_color_1.default.ok("set token");
+const SUs = configFile.SU;
+console_color_1.default.ok("set SUs users");
 app.login(token);
 // When client is ready 
 app.on("ready", () => {
-    console_color_1.default.ok("Bot_0463 loged\n");
+    console_color_1.default.ok("Bot_0463 loged");
+    for (let i = 0; i < SUs.length; i++) {
+        console_color_1.default.info(`SU: ${SUs[i]} loaded`);
+    }
 });
 // When a message is created
 app.on("messageCreate", (msg) => {
