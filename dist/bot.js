@@ -10,7 +10,7 @@ console_color_1.default.ok("import log format");
 const commands_1 = __importDefault(require("./commands/commands"));
 console_color_1.default.ok("import commands ok");
 const configFile = require("../config.json");
-console.log("[OK] import ../config.json");
+console_color_1.default.ok("import ../config.json");
 const app = new discord_js_1.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 console_color_1.default.ok("app and intents");
 const prefix = configFile.prefix;

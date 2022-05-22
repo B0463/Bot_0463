@@ -6,7 +6,7 @@ ConCol.ok("import log format");
 import commands from "./commands/commands";
 ConCol.ok("import commands ok");
 const configFile = require("../config.json");
-console.log("[OK] import ../config.json");
+ConCol.ok("import ../config.json");
 const app = new Client({intents:["GUILDS","GUILD_MESSAGES"]});
 ConCol.ok("app and intents");
 const prefix = configFile.prefix;
