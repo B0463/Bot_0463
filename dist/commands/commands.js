@@ -2,6 +2,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const SU_1 = __importDefault(require("./SU"));
 const MAIN_1 = __importDefault(require("./MAIN"));
 const help_1 = __importDefault(require("./help"));
 const ceira_1 = __importDefault(require("./ceira"));
@@ -15,6 +16,9 @@ function init(msg, prefix) {
         return 1;
     const userCom = msg.content.split(" ")[0];
     switch (userCom) {
+        case (prefix + "SU"):
+            SU_1.default.exec(msg, prefix);
+            break;
         case (prefix):
             MAIN_1.default.exec(msg, prefix);
             break;

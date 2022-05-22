@@ -4,7 +4,7 @@ console.log("[OK] import discord.js");
 import ConCol from "./functions/console_color";
 ConCol.ok("import log format");
 import commands from "./commands/commands";
-ConCol.ok("import commands ok");
+ConCol.ok("import commands");
 const configFile = require("../config.json");
 ConCol.ok("import ../config.json");
 const app = new Client({intents:["GUILDS","GUILD_MESSAGES"]});

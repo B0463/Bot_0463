@@ -1,4 +1,5 @@
 import { Message } from "discord.js";
+import SU from "./SU";
 import MAIN from "./MAIN";
 import help from "./help";
 import ceira from "./ceira";
@@ -11,6 +12,9 @@ function init(msg: Message, prefix: string): number {
     if(msg.author.bot) return 1;
     const userCom = msg.content.split(" ")[0];
     switch(userCom) {
+        case(prefix+"SU"):
+            SU.exec(msg, prefix);
+            break;
         case(prefix):
             MAIN.exec(msg, prefix);
             break;

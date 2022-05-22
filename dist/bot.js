@@ -8,7 +8,7 @@ console.log("[OK] import discord.js");
 const console_color_1 = __importDefault(require("./functions/console_color"));
 console_color_1.default.ok("import log format");
 const commands_1 = __importDefault(require("./commands/commands"));
-console_color_1.default.ok("import commands ok");
+console_color_1.default.ok("import commands");
 const configFile = require("../config.json");
 console_color_1.default.ok("import ../config.json");
 const app = new discord_js_1.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
