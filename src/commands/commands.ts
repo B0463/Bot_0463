@@ -6,6 +6,7 @@ import sinas from "./sinas";
 import avatar from "./avatar";
 import servericon from "./servericon";
 import theclock from "./theclock";
+import userinfo from "./userinfo";
 function init(msg: Message, prefix: string) {
     const userCom = msg.content.split(" ")[0];
     switch(userCom) {
@@ -29,6 +30,9 @@ function init(msg: Message, prefix: string) {
             break;
         case(prefix+"theclock"):
             theclock.exec(msg, prefix);
+            break;
+        case(prefix+"userinfo"):
+            userinfo.exec(msg, prefix);
             break;
         default:
             break;
