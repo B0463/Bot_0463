@@ -1,6 +1,6 @@
 cd ..
-rm -s .git
-rm -s src
+rm -r .git
+rm -r src
 rm .gitignore
 rm embed.txt
 rm package-lock.json
