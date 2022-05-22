@@ -10,7 +10,7 @@ export default {
                 { name: prefix+"help", value: "list of commands" },
                 { name: prefix+"ceira", value: "returns sinas" },
                 { name: prefix+"sinas", value: "returns ceira" },
-                { name: prefix+"avatar", value: "returns your avatar (only works with user mention)" },
+                { name: prefix+"avatar", value: "returns your avatar (only works with user id)" },
                 { name: prefix+"servericon", value: "returns the server icoon" }
             );
         msg.channel.send({ embeds: [embed] });
