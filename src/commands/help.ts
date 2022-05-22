@@ -12,7 +12,8 @@ export default {
                 { name: prefix+"sinas", value: "returns ceira" },
                 { name: prefix+"avatar", value: "returns your avatar (only works with user id)" },
                 { name: prefix+"servericon", value: "returns the server icon" },
-                { name: prefix+"theclock", value: "returns the current UTC time" }
+                { name: prefix+"theclock", value: "returns the current UTC time" },
+                { name: prefix+"userinfo", value: "returns the information of acount" },
             );
         msg.channel.send({ embeds: [embed] });
     }
