@@ -13,6 +13,12 @@ config.json sintax:
     "SU": [
         "<you user id>",
         "<outer SU user id (optional)>"
-    ]
+    ],
+    "debug": {
+		"active": false,
+		"debugServers": [
+			"<your debug server id>"
+		]
+	}
 }
 ```

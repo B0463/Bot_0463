@@ -19,6 +19,15 @@ const token = configFile.token;
 console_color_1.default.ok("set token");
 const SUs = configFile.SU;
 console_color_1.default.ok("set SUs users");
+const debugState = configFile.debug.active;
+console_color_1.default.ok("set debugState");
+const debugServers = configFile.debug.debugServers;
+if (debugState) {
+    console_color_1.default.info("debug actived");
+    for (let i = 0; i < debugServers.length; i++) {
+        console_color_1.default.info(`debugServer: ${debugServers[i]} loaded`);
+    }
+}
 app.login(token);
 // When client is ready 
 app.on("ready", () => {
@@ -28,9 +37,29 @@ app.on("ready", () => {
     }
 });
 // When a message is created
-app.on("messageCreate", (msg) => {
-    commands_1.default.init(msg, prefix);
-});
+if (!debugState) {
+    app.on("messageCreate", (msg) => {
+        commands_1.default.init(msg, prefix);
+    });
+}
+else {
+    app.on("messageCreate", (msg) => {
+        let confirm = false;
+        for (let i = 0; i < debugServers.length; i++) {
+            if (msg.guild.id == debugServers[i]) {
+                confirm = true;
+                break;
+            }
+            continue;
+        }
+        if (confirm) {
+            commands_1.default.init(msg, prefix);
+        }
+        else {
+            commands_1.default.noDebugServer(msg, prefix);
+        }
+    });
+}
 app.on("error", (error) => {
     console_color_1.default.error(error);
 });

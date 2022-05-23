@@ -11,17 +11,24 @@ const avatar_1 = __importDefault(require("./avatar"));
 const servericon_1 = __importDefault(require("./servericon"));
 const theclock_1 = __importDefault(require("./theclock"));
 const userinfo_1 = __importDefault(require("./userinfo"));
+function verifyUserPrefix(msg, prefix) {
+    const userCom = msg.content.split(" ")[0];
+    const prefixLen = prefix.length;
+    if (userCom.length < prefixLen)
+        return false;
+    const userPrefix = userCom.substring(0, prefixLen);
+    if (userPrefix == prefix) {
+        return true;
+    }
+    else
+        return false;
+}
 function init(msg, prefix) {
     if (msg.author.bot)
         return 1;
-    const userCom = msg.content.split(" ")[0];
-    switch (userCom) {
-        case (prefix + "SU"):
-            SU_1.default.exec(msg, prefix);
-            break;
-        case (prefix):
-            MAIN_1.default.exec(msg, prefix);
-            break;
+    if (!verifyUserPrefix(msg, prefix))
+        return 1;
+    switch (msg.content.split(" ")[0]) {
         case (prefix + "help"):
             help_1.default.exec(msg, prefix);
             break;
@@ -43,12 +50,31 @@ function init(msg, prefix) {
         case (prefix + "userinfo"):
             userinfo_1.default.exec(msg, prefix);
             break;
+        case (prefix + "SU"):
+            SU_1.default.exec(msg, prefix);
+            break;
         default:
+            MAIN_1.default.exec(msg, prefix);
             break;
     }
     return 0;
 }
+function noDebugServer(msg, prefix) {
+    if (msg.author.bot)
+        return 1;
+    const userCom = msg.content.split(" ")[0];
+    const prefixLen = prefix.length;
+    if (userCom.length < prefixLen)
+        return 1;
+    const userPrefix = userCom.substring(0, prefixLen);
+    if (userPrefix == prefix) {
+        msg.channel.send("sorry, Bot_0463 on development.");
+    }
+    else
+        return 1;
+}
 const obj = {
-    init
+    init,
+    noDebugServer
 };
 exports.default = obj;
