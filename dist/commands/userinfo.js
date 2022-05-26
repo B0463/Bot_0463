@@ -1,5 +1,8 @@
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const discord_js_1 = require("discord.js");
+const embed_1 = __importDefault(require("../functions/embed"));
 function getUserCreatedUTCDate(user) {
     const now = user.createdAt;
     let Day = now.getUTCDate();
@@ -34,12 +37,19 @@ function getUserCreatedUTCDate(user) {
     return DateFormated;
 }
 function UserInfoEmbed(autor) {
-    return new discord_js_1.MessageEmbed()
-        .setColor('#00ff00')
-        .setTitle('UserInfo')
-        .setAuthor({ name: autor.username })
-        .setThumbnail(autor.avatarURL())
-        .addFields({ name: '**Tag**', value: `\`${autor.tag}\``, inline: true }, { name: '**ID**', value: `\`${autor.id}\``, inline: true }, { name: "**Conta criada em**", value: `\`${getUserCreatedUTCDate(autor)}\``, inline: true });
+    return embed_1.default.createEmbed({
+        color: "#00ff00",
+        title: "UserInfo",
+        author: {
+            name: autor.username
+        },
+        thumbnail: autor.avatarURL(),
+        filds: [
+            { name: '**Tag**', value: `\`${autor.tag}\``, inline: true },
+            { name: '**ID**', value: `\`${autor.id}\``, inline: true },
+            { name: "**Conta criada em**", value: `\`${getUserCreatedUTCDate(autor)}\``, inline: true }
+        ]
+    });
 }
 exports.default = {
     exec(msg, prefix) {

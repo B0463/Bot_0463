@@ -1,4 +1,4 @@
-import { MessageEmbed, Message } from "discord.js";
+import { Message } from "discord.js";
 export default {
     exec(msg: Message, prefix: any) {
         if(!msg.member.permissions.has("MANAGE_MESSAGES")) {

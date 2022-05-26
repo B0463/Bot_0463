@@ -1,5 +1,8 @@
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const discord_js_1 = require("discord.js");
+const embed_1 = __importDefault(require("../functions/embed"));
 function getUTCDate() {
     const now = new Date;
     let Day = now.getUTCDate();
@@ -35,10 +38,11 @@ function getUTCDate() {
 }
 exports.default = {
     exec(msg, prefix) {
-        const embed = new discord_js_1.MessageEmbed()
-            .setColor('#0099ff')
-            .setTitle('The Clock')
-            .setDescription(getUTCDate());
-        msg.channel.send({ embeds: [embed] });
+        const embed = {
+            color: "#0099ff",
+            title: "The Clock",
+            description: getUTCDate()
+        };
+        msg.channel.send({ embeds: [embed_1.default.createEmbed(embed)] });
     }
 };

@@ -1,11 +1,12 @@
-import { MessageEmbed, Message } from "discord.js";
+import { Message } from "discord.js";
+import embedG from "../functions/embed";
 export default {
     exec(msg: Message, prefix: any) {
-        const embed = new MessageEmbed()
-            .setColor('#00ff00')
-            .setTitle('HELP')
-            .setDescription('HELP ME PLSS')
-            .addFields(
+        const embed = embedG.createEmbed({
+            color: "#00ff00",
+            title: "HELP",
+            description: "HELP ME PLSS",
+            filds: [
                 { name: prefix+"", value: "default command" },
                 { name: prefix+"help", value: "list of commands" },
                 { name: prefix+"ceira", value: "returns sinas" },
@@ -14,7 +15,9 @@ export default {
                 { name: prefix+"servericon", value: "returns the server icon" },
                 { name: prefix+"theclock", value: "returns the current UTC time" },
                 { name: prefix+"userinfo", value: "returns the information of acount" },
-            );
+                { name: prefix+"clear", value: "cleat chat" }
+            ]
+        });
         msg.channel.send({ embeds: [embed] });
     }
 };

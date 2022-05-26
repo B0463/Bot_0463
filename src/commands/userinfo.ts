@@ -1,4 +1,5 @@
-import { MessageEmbed, Message } from "discord.js";
+import { Message } from "discord.js";
+import embedG from "../functions/embed";
 function getUserCreatedUTCDate(user: Message["author"]): string {
     const now = user.createdAt;
     let Day = now.getUTCDate();
@@ -26,17 +27,19 @@ function getUserCreatedUTCDate(user: Message["author"]): string {
     return DateFormated;
 }
 function UserInfoEmbed(autor: Message["author"]) {
-    return new MessageEmbed()
-        .setColor('#00ff00')
-        .setTitle('UserInfo')
-        .setAuthor({ name: autor.username })
-        .setThumbnail(autor.avatarURL())
-        .addFields(
+    return embedG.createEmbed({
+        color: "#00ff00",
+        title: "UserInfo",
+        author: {
+            name: autor.username
+        },
+        thumbnail: autor.avatarURL(),
+        filds: [
             { name: '**Tag**', value: `\`${autor.tag}\``, inline: true  },
             { name: '**ID**', value: `\`${autor.id}\``, inline: true  },
             { name: "**Conta criada em**", value: `\`${getUserCreatedUTCDate(autor)}\``, inline: true }
-        );
-        
+        ]
+    });
 }
 export default {
     exec(msg: Message, prefix: any) {

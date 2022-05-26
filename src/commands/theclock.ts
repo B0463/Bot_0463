@@ -1,4 +1,5 @@
-import { MessageEmbed, Message } from "discord.js";
+import { Message } from "discord.js";
+import embedG from "../functions/embed";
 function getUTCDate(): string {
     const now = new Date;
     let Day = now.getUTCDate();
@@ -27,10 +28,11 @@ function getUTCDate(): string {
 }
 export default {
     exec(msg: Message, prefix: any) {
-        const embed = new MessageEmbed()
-            .setColor('#0099ff')
-            .setTitle('The Clock')
-            .setDescription(getUTCDate());
-        msg.channel.send({ embeds: [embed] });
+        const embed = {
+            color: "#0099ff",
+            title: "The Clock",
+            description: getUTCDate()
+        }
+        msg.channel.send({ embeds: [embedG.createEmbed(embed)] });
     }
 };

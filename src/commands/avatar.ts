@@ -1,11 +1,15 @@
-import { MessageEmbed, Message } from "discord.js";
+import { Message } from "discord.js";
+import embedG from "../functions/embed";
 function AvatarEmbed(autor) {
-    return new MessageEmbed()
-        .setColor('#00ff00')
-        .setTitle('Avatar')
-        .setAuthor({ name: autor.username })
-        .setDescription(`avatar of <@${autor.id}>`)
-        .setImage(autor.avatarURL());
+    return embedG.createEmbed({
+        color: "#00ff00",
+        title: "Avatar",
+        author: {
+            name: autor.username
+        },
+        description: `avatar of <@${autor.id}>`,
+        image: autor.avatarURL()
+    });
 }
 export default {
     exec(msg: Message, prefix: any) {
