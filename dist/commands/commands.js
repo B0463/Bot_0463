@@ -11,6 +11,7 @@ const avatar_1 = __importDefault(require("./avatar"));
 const servericon_1 = __importDefault(require("./servericon"));
 const theclock_1 = __importDefault(require("./theclock"));
 const userinfo_1 = __importDefault(require("./userinfo"));
+const clear_1 = __importDefault(require("./clear"));
 function verifyUserPrefix(msg, prefix) {
     const userCom = msg.content.split(" ")[0];
     const prefixLen = prefix.length;
@@ -49,6 +50,9 @@ function init(msg, prefix) {
             break;
         case (prefix + "userinfo"):
             userinfo_1.default.exec(msg, prefix);
+            break;
+        case (prefix + "clear"):
+            clear_1.default.exec(msg, prefix);
             break;
         case (prefix + "SU"):
             SU_1.default.exec(msg, prefix);

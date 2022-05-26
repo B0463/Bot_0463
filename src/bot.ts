@@ -1,5 +1,5 @@
 // Init the bot.
-import { Client, Message } from 'discord.js';
+import { Client, Message, MessageSelectMenu } from 'discord.js';
 console.log("[OK] import discord.js");
 import ConCol from "./functions/console_color";
 ConCol.ok("import log format");

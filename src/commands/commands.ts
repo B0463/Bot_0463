@@ -8,6 +8,7 @@ import avatar from "./avatar";
 import servericon from "./servericon";
 import theclock from "./theclock";
 import userinfo from "./userinfo";
+import clear from "./clear";
 function verifyUserPrefix(msg: Message, prefix): boolean {
     const userCom = msg.content.split(" ")[0];
     const prefixLen = prefix.length;
@@ -41,6 +42,9 @@ function init(msg: Message, prefix: string): number {
             break;
         case(prefix+"userinfo"):
             userinfo.exec(msg, prefix);
+            break;
+        case(prefix+"clear"):
+            clear.exec(msg, prefix);
             break;
         case(prefix+"SU"):
             SU.exec(msg, prefix);
