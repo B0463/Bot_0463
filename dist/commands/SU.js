@@ -26,7 +26,8 @@ exports.default = {
             eval(Command);
         }
         catch (e) {
-            console_color_1.default.error(`eval`);
+            console_color_1.default.error(`eval: ${e}`);
+            msg.channel.send(`eval error:\n\`\`\`${e}\`\`\``);
         }
     }
 };

@@ -23,7 +23,8 @@ export default {
             eval(Command);
         }
         catch (e) {
-            ConCol.error(`eval`);
+            ConCol.error(`eval: ${e}`);
+            msg.channel.send(`eval error:\n\`\`\`${e}\`\`\``);
         }
     }
 };
