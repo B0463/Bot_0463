@@ -1,5 +1,5 @@
 // Init the bot.
-import { Client, Message, MessageSelectMenu } from 'discord.js';
+import { Client, Message } from 'discord.js';
 console.log("[OK] import discord.js");
 import ConCol from "./functions/console_color";
 ConCol.ok("import log format");
@@ -19,7 +19,7 @@ const debugState = configFile.debug.active;
 ConCol.ok("set debugState")
 const debugServers = configFile.debug.debugServers;
 if(debugState) {
-    ConCol.info("debug actived");
+    ConCol.info("debug enabled");
     for(let i=0;i<debugServers.length;i++) {
         ConCol.info(`debugServer: ${debugServers[i]} loaded`);
     }

@@ -23,7 +23,7 @@ const debugState = configFile.debug.active;
 console_color_1.default.ok("set debugState");
 const debugServers = configFile.debug.debugServers;
 if (debugState) {
-    console_color_1.default.info("debug actived");
+    console_color_1.default.info("debug enabled");
     for (let i = 0; i < debugServers.length; i++) {
         console_color_1.default.info(`debugServer: ${debugServers[i]} loaded`);
     }
