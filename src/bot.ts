@@ -1,35 +1,35 @@
 // Init the bot.
+import FarbeLog from "./functions/FarbeLog";
+FarbeLog.ok.withHour("import", "log format");
 import { Client, Message } from 'discord.js';
-console.log("[OK] import discord.js");
-import ConCol from "./functions/console_color";
-ConCol.ok("import log format");
+FarbeLog.ok.withHour("import", "discord.js");
 import commands from "./commands/commands";
-ConCol.ok("import commands");
+FarbeLog.ok.withHour("import", "commands");
 const configFile = require("../config.json");
-ConCol.ok("import ../config.json");
+FarbeLog.ok.withHour("import", "../config.json");
 const app = new Client({intents:["GUILDS","GUILD_MESSAGES"]});
-ConCol.ok("app and intents");
+FarbeLog.ok.withHour("set", "app and intents");
 const prefix = configFile.prefix;
-ConCol.ok("set prefix");
+FarbeLog.ok.withHour("set", "prefix");
 const token = configFile.token;
-ConCol.ok("set token");
+FarbeLog.ok.withHour("set", "token");
 const SUs = configFile.SU;
-ConCol.ok("set SUs users");
+FarbeLog.ok.withHour("set", "SUs users");
 const debugState = configFile.debug.active;
-ConCol.ok("set debugState")
+FarbeLog.ok.withHour("set", "debugState")
 const debugServers = configFile.debug.debugServers;
 if(debugState) {
-    ConCol.info("debug enabled");
+    FarbeLog.info.withHour("enabled", "debug");
     for(let i=0;i<debugServers.length;i++) {
-        ConCol.info(`debugServer: ${debugServers[i]} loaded`);
+        FarbeLog.info.withHour("loaded", `debugServer: ${debugServers[i]}`);
     }
 }
 app.login(token);
 // When client is ready 
 app.on("ready", () => {
-    ConCol.ok("Bot_0463 loged");
+    FarbeLog.ok.withHour("logged", "Bot_0463");
     for(let i=0;i<SUs.length;i++) {
-        ConCol.info(`SU: ${SUs[i]} loaded`);
+        FarbeLog.info.withHour("loaded", `SU: ${SUs[i]}`);
     }
 });
 // When a message is created
@@ -56,5 +56,5 @@ if(!debugState) {
     });
 }
 app.on("error", (error) => {
-    ConCol.error(error);
+    FarbeLog.error.withHour("app error", "error with app:\n"+error);
 });

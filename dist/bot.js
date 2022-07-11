@@ -3,37 +3,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 // Init the bot.
+const FarbeLog_1 = __importDefault(require("./functions/FarbeLog"));
+FarbeLog_1.default.ok.withHour("import", "log format");
 const discord_js_1 = require("discord.js");
-console.log("[OK] import discord.js");
-const console_color_1 = __importDefault(require("./functions/console_color"));
-console_color_1.default.ok("import log format");
+FarbeLog_1.default.ok.withHour("import", "discord.js");
 const commands_1 = __importDefault(require("./commands/commands"));
-console_color_1.default.ok("import commands");
+FarbeLog_1.default.ok.withHour("import", "commands");
 const configFile = require("../config.json");
-console_color_1.default.ok("import ../config.json");
+FarbeLog_1.default.ok.withHour("import", "../config.json");
 const app = new discord_js_1.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
-console_color_1.default.ok("app and intents");
+FarbeLog_1.default.ok.withHour("set", "app and intents");
 const prefix = configFile.prefix;
-console_color_1.default.ok("set prefix");
+FarbeLog_1.default.ok.withHour("set", "prefix");
 const token = configFile.token;
-console_color_1.default.ok("set token");
+FarbeLog_1.default.ok.withHour("set", "token");
 const SUs = configFile.SU;
-console_color_1.default.ok("set SUs users");
+FarbeLog_1.default.ok.withHour("set", "SUs users");
 const debugState = configFile.debug.active;
-console_color_1.default.ok("set debugState");
+FarbeLog_1.default.ok.withHour("set", "debugState");
 const debugServers = configFile.debug.debugServers;
 if (debugState) {
-    console_color_1.default.info("debug enabled");
+    FarbeLog_1.default.info.withHour("enabled", "debug");
     for (let i = 0; i < debugServers.length; i++) {
-        console_color_1.default.info(`debugServer: ${debugServers[i]} loaded`);
+        FarbeLog_1.default.info.withHour("loaded", `debugServer: ${debugServers[i]}`);
     }
 }
 app.login(token);
 // When client is ready 
 app.on("ready", () => {
-    console_color_1.default.ok("Bot_0463 loged");
+    FarbeLog_1.default.ok.withHour("logged", "Bot_0463");
     for (let i = 0; i < SUs.length; i++) {
-        console_color_1.default.info(`SU: ${SUs[i]} loaded`);
+        FarbeLog_1.default.info.withHour("loaded", `SU: ${SUs[i]}`);
     }
 });
 // When a message is created
@@ -61,5 +61,5 @@ else {
     });
 }
 app.on("error", (error) => {
-    console_color_1.default.error(error);
+    FarbeLog_1.default.error.withHour("app error", "error with app:\n" + error);
 });

@@ -2,7 +2,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const console_color_1 = __importDefault(require("../functions/console_color"));
+const FarbeLog_1 = __importDefault(require("../functions/FarbeLog"));
 exports.default = {
     exec(msg, prefix) {
         const configFile = require("../../config.json");
@@ -21,12 +21,12 @@ exports.default = {
         }
         const SuperUser = msg.author;
         const Command = msg.content.substring(msg.content.split(" ")[0].length + 1);
-        console_color_1.default.info(`eval by {${SuperUser.tag}} content {${Command}}:`);
+        FarbeLog_1.default.info.withHour("eval", `{${SuperUser.tag}} content {${Command}}:`);
         try {
             eval(Command);
         }
         catch (e) {
-            console_color_1.default.error(`eval: ${e}`);
+            FarbeLog_1.default.error.withHour("eval", e);
             msg.channel.send(`eval error:\n\`\`\`${e}\`\`\``);
         }
     }

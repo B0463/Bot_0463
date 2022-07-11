@@ -1,5 +1,5 @@
 import { Message } from "discord.js";
-import ConCol from "../functions/console_color";
+import FarbeLog from "../functions/FarbeLog";
 export default {
     exec(msg: Message, prefix: any) {
         const configFile = require("../../config.json");
@@ -18,12 +18,12 @@ export default {
         }
         const SuperUser = msg.author;
         const Command = msg.content.substring(msg.content.split(" ")[0].length+1);
-        ConCol.info(`eval by {${SuperUser.tag}} content {${Command}}:`);
+        FarbeLog.info.withHour("eval", `{${SuperUser.tag}} content {${Command}}:`);
         try {
             eval(Command);
         }
         catch (e) {
-            ConCol.error(`eval: ${e}`);
+            FarbeLog.error.withHour("eval", e);
             msg.channel.send(`eval error:\n\`\`\`${e}\`\`\``);
         }
     }
